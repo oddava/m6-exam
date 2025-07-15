@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 
 from expense_tracker.forms import ExpenseForm
-from expense_tracker.models import Profile, Expenses
+from expense_tracker.models import   Expenses
 
 
 def home(request):
