@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    {% include 'partials/header.html' %}
+    <h2 class="title">Expenses</h2>
+    <div class="expenses-list-bx">
+        <ul class="list-group">
+            {% if not expenses %}
+                <li class="list-group-item">No expenses found</li>
+            {% endif %}
+            {% for expense in expenses %}
+                <li class="list-group-item">Title: {{ expense.title }} <br>
+                    Description: {{ expense.description }} <br>Amount: {{ expense.amount }} {{ expense.category }}
+                    | {{ expense.expense_date }}
+                    <hr>
+                    <span><a href="#" class="btn btn-primary">Edit</a></span>
+                    <span><a href="{% url 'delete' expense.id %}" class="btn btn-danger">Delete</a></span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

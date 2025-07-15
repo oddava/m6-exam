@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+{% block title %}Add expense{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    {% include 'partials/header.html' %}
+    <form method="post" action="{% url 'add_expense' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}
